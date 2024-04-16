@@ -4,11 +4,10 @@ namespace Uplod;
 
 class Uplod
 {
-    public function move_upl_file($direct_name): bool
+    public function move_upl_file($direct_name, $files, $uniqfile): bool|string
     {
-        $uniqfile = uniqid(). $_FILES['image']['name'];
-        if(move_uploaded_file($_FILES['image']['tmp_name'], $direct_name . $uniqfile)){
-            return true;
+        if(move_uploaded_file($files['image']['tmp_name'], $direct_name . $uniqfile)){
+            return $uniqfile;
         }else{
             return false;
         }
