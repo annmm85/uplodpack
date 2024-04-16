@@ -13,7 +13,7 @@ class Uplod
         $this->string = $direct_name;
     }
 
-    public function move_upl_file($_FILES, $direct_name): array
+    public function move_upl_file($_FILES, $direct_name): bool
     {
         $uniqfile = uniqid(). $_FILES['image']['name'];
         if(move_uploaded_file($_FILES['image']['tmp_name'], $direct_name . $uniqfile)){
