@@ -4,23 +4,27 @@ namespace src;
 
 class Uplod
 {
-    private $_FILES;
+    private array $_FILES=[];
+    private string $direct_name = '';
 
-    public function __construct(array $array = [])
+    public function __construct(array $_FILES=[], string $direct_name = '')
     {
-        $this->array = $array;
+        $this->array = $_FILES;
+        $this->string = $direct_name;
     }
-    public function files(): array
+
+    public function move_upl_file($_FILES, $direct_name): array
     {
-        return $_FILES;
-    }
-    public function move_upl_file($image, $tmp_name, $direct_name, $name): array
-    {
-        if( move_uploaded_file($_FILES[$image][$tmp_name], $direct_name . $_FILES[$image][$name])){
-            return ["File Uploaded"];
-        }
-        else{
-            return ["File Not uploaded"];
+        $uniqfile = uniqid(). $_FILES['image']['name'];
+        if(move_uploaded_file($_FILES['image']['tmp_name'], $direct_name . $uniqfile)){
+            return true;
+        }else{
+            return false;
         }
     }
+
+//    public function files(): array
+//    {
+//        return $_FILES;
+//    }
 }
