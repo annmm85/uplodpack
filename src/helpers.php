@@ -3,7 +3,7 @@ namespace Uplod;
 
 use src\Uplod;
 
-function uplodition(array $array = []): Uplod
+function uplodition($_FILES): Uplod
 {
-    return new Uplod($array);
+    return new Uplod($_FILES);
 }

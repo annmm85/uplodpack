@@ -4,7 +4,7 @@ namespace src;
 
 class Uplod
 {
-    private array $array = [];
+    private $_FILES;
 
     public function __construct(array $array = [])
     {
@@ -16,7 +16,11 @@ class Uplod
     }
     public function move_upl_file($image, $tmp_name, $direct_name, $name): array
     {
-        return move_uploaded_file($_FILES[$image][$tmp_name], $direct_name . $_FILES[$image][$name]);
+        if( move_uploaded_file($_FILES[$image][$tmp_name], $direct_name . $_FILES[$image][$name])){
+            return ["File Uploaded"];
+        }
+        else{
+            return ["File Not uploaded"];
+        }
     }
-
 }
